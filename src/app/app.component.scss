@@ -1,0 +1,29 @@
+@import "../styles.scss";
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  background-color: $upfluence-grey;
+  color: white;
+  font-weight: 600;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.toolbar img {
+  margin: 0 40px;
+  width: 120px;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
