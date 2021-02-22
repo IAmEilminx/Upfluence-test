@@ -2,7 +2,6 @@ export class SocialPost {
   id: string;
   timestamp: number;
 }
-
 export class FacebookStatus extends SocialPost {
   comments: number;
   likes: number;
@@ -40,7 +39,7 @@ export class Pin extends SocialPost {
   saves: number;
   timestamp: number;
   title: string;
-  
+
   constructor(obj) {
     super()
     Object.assign(this, obj);

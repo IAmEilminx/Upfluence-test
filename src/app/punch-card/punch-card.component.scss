@@ -1,0 +1,26 @@
+:host {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+}
+
+.day-row {
+  height: 80px;
+}
+
+.day-name {
+  width: 80px;
+}
+
+.day-value {
+  background-color: green;
+  height: 40px;
+  color: white;
+  border-radius: 50%;
+}

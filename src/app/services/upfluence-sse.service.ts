@@ -1,7 +1,7 @@
+import { SocialPost, FacebookStatus, Tweet, Pin, Article, InstagramMedia, YoutubeVideo } from './../models/social-post.model';
 import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FacebookStatus, Tweet, Pin, Article, InstagramMedia, YoutubeVideo } from '../models/social-post.model';
 
 @Injectable()
 export class UpfluenceSseService {

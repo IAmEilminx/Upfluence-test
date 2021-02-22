@@ -1,0 +1,13 @@
+<div class="container" fxLayout="column">
+  <div class="title">Title here</div>
+  <div class="chart">
+    <div *ngFor="let day of weekdayArray" fxLayout="row"
+      fxLayoutAlign="start center" class="day-row" fxLayoutGap="5px">
+      <div class="day-name">{{day.dayName}}</div>
+      <div *ngFor="let hour of day.hours" class="day-value"
+        fxLayoutAlign="center center" fxFlex>
+        {{hour.length}}
+      </div>
+    </div>
+  </div>
+</div>

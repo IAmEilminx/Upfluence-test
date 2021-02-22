@@ -1,11 +1,8 @@
-
-
 <div class="toolbar">
-  <img alt="Upfluence Logo" src="assets/images/logo.png"/>
+    <img alt="Upfluence Logo" src="assets/images/logo.png" />
 </div>
-
-<div class="content" role="main">
-
+<div class="content">
+    <punch-card [inputSocialPost]="notifyChild.asObservable()"></punch-card>
 </div>
 
 <router-outlet></router-outlet>

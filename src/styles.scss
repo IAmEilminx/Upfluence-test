@@ -1,20 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url(~/assets/images/background.png);
+  background-repeat: no-repeat;
+}
 
 $upfluence-blue: #0d0ee6;
 $upfluence-orange: #ff4331;
 $upfluence-grey: #f4f5ff;
-
 @font-face {
   font-family: "eesti";
   font-style: normal;
-  src: url('~/assets/fonts/GTEestiProText-Regular.ttf') format("truetype");
+  src: url("~/assets/fonts/GTEestiProText-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "eesti";
   font-style: bold;
-  src: url('~/assets/fonts/GTEestiProText-Bold.ttf') format("truetype");
+  src: url("~/assets/fonts/GTEestiProText-Bold.ttf") format("truetype");
 }

@@ -1,5 +1,4 @@
 @import "../styles.scss";
-
 .toolbar {
   position: absolute;
   top: 0;
@@ -11,7 +10,7 @@
   background-color: $upfluence-grey;
   color: white;
   font-weight: 600;
-  border-bottom: 1px solid #ECECEC;
+  border-bottom: 1px solid #ececec;
 }
 
 .toolbar img {
@@ -21,9 +20,10 @@
 
 .content {
   display: flex;
+  box-sizing: border-box;
   margin: 82px auto 32px;
   padding: 0 16px;
-  max-width: 960px;
+  width: 100%;
   flex-direction: column;
   align-items: center;
 }
