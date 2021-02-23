@@ -8,11 +8,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: url(~/assets/images/background.png);
   background-repeat: no-repeat;
+  background-size: contain;
 }
 
 $upfluence-blue: #0d0ee6;
 $upfluence-orange: #ff4331;
 $upfluence-grey: #f4f5ff;
+
 @font-face {
   font-family: "eesti";
   font-style: normal;
@@ -20,7 +22,7 @@ $upfluence-grey: #f4f5ff;
 }
 
 @font-face {
-  font-family: "eesti";
+  font-family: "eesti-bold";
   font-style: bold;
   src: url("~/assets/fonts/GTEestiProText-Bold.ttf") format("truetype");
 }

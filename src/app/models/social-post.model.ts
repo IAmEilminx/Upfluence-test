@@ -1,3 +1,10 @@
+export const SocialPostTypes = ['FacebookStatus',
+  'Tweet',
+  'Pin',
+  'Article',
+  'InstagramMedia',
+  'YoutubeVideo'];
+
 export class SocialPost {
   id: string;
   timestamp: number;

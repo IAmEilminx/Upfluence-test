@@ -1,12 +1,51 @@
 <div class="container" fxLayout="column">
-  <div class="title">Title here</div>
-  <div class="chart">
-    <div *ngFor="let day of weekdayArray" fxLayout="row"
-      fxLayoutAlign="start center" class="day-row" fxLayoutGap="5px">
-      <div class="day-name">{{day.dayName}}</div>
-      <div *ngFor="let hour of day.hours" class="day-value"
-        fxLayoutAlign="center center" fxFlex>
-        {{hour.length}}
+  <div class="title" fxLayoutAlign="center center">
+    Social Post Activity per Day & Hour (in Real-time from Stream)
+    <img src="assets/icons/stop-button.png" *ngIf="running"
+      (click)="stopSubscription()">
+    <img src="assets/icons/update-arrow.png" *ngIf="!running"
+      (click)="restartSubscription()">
+  </div>
+  <div class="chart" fxLayout="row">
+
+    <div class="values">
+      <div *ngFor="let day of weekdayArray" fxLayout="row"
+        fxLayoutAlign="start center" class="day-row" fxLayoutGap="5px">
+        <div class="day-name" fxLayoutAlign="center end">{{day.dayName}}</div>
+        <div *ngFor="let hour of day.hours" class="day-value"
+          fxLayoutAlign="center center" (mouseenter)="hour.showHover = true"
+          (mouseleave)="hour.showHover = false">
+          <div class="punch-circle" [ngStyle]="getCircleSize(hour)">
+          </div>
+          <div class="hover-data" *ngIf="hour.showHover">
+            {{hoverDetails(hour)}}
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="85px"></div>
+        <div class="legend-hour" *ngFor="let key of hoursLabels">
+          {{key}}
+        </div>
+      </div>
+    </div>
+
+    <div class="legend" fxLayout="column" fxFlex="15">
+      <div *ngFor="let socialPost of socialPostCounter | keyvalue">
+        <mat-checkbox [(ngModel)]="socialPost.value.show" [color]="'primary'">
+          {{socialPost.key}}
+        </mat-checkbox>
+        <div fxFlex></div>
+        {{socialPost.value.counter}}
+      </div>
+      <div fxFlex></div>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <div class="total-label">
+          Total Number of Social Posts :
+        </div>
+        <div class="total-amount" fxFlex>
+          {{totalSocialPostsProcessed}}
+        </div>
       </div>
     </div>
   </div>
