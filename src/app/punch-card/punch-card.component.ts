@@ -43,7 +43,7 @@ export class PunchCardComponent implements OnInit {
     return { height: sizeInPercentage + '%', width: sizeInPercentage + '%' };
   }
 
-  public hoverDetails(postArray: Array<SocialPost>): string {
+  public hoverDetails(postArray: Array<any>): string {
     return 'Number of Social posts ' + this.getNumberOfPostsBasedOnUserFilters(postArray);
   }
 
@@ -61,7 +61,7 @@ export class PunchCardComponent implements OnInit {
     this.initSubscription();
   }
 
-  private getNumberOfPostsBasedOnUserFilters(postArray: Array<SocialPost>): number {
+  private getNumberOfPostsBasedOnUserFilters(postArray: Array<any>): number {
     return postArray.filter((spType) => {
       return Object.keys(this.socialPostCounter).filter((key) => {
         return key === spType.constructor.name
@@ -71,7 +71,7 @@ export class PunchCardComponent implements OnInit {
   }
 
   private initSubscription(): void {
-    this.subscription = this.inputSocialPost.subscribe((post: SocialPost) => {
+    this.subscription = this.inputSocialPost.subscribe((post: any) => {
       this.addPostToDay(post);
     });
   }
@@ -80,7 +80,7 @@ export class PunchCardComponent implements OnInit {
     let timestamp = moment.unix(post.timestamp);
     this.totalSocialPostsProcessed++;
     this.socialPostCounter[post.constructor.name].counter++;
-    this.weekdayArray[timestamp.day()].hours[timestamp.hour()].push(post)
+    this.weekdayArray[timestamp.day()].hours[timestamp.hour()].push(post);
   }
 
   private initWeekdayArray(): void {
