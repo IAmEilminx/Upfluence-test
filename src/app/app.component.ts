@@ -12,7 +12,7 @@ export class AppComponent {
   public title = 'upfluence-test';
   public notifyChild: Subject<any> = new Subject<any>();
   public running: boolean = true;
-  public socialPostTypes = {
+  public socialPostTypes: Object = {
     'FacebookStatus': {},
     'Tweet': {},
     'Pin': {},
