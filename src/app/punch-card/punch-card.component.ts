@@ -11,26 +11,16 @@ import * as moment from 'moment';
 })
 export class PunchCardComponent implements OnInit {
   @Input() inputSocialPost: Observable<any>;
+  @Input() type: string;
   public running: boolean = true;
   public weekdayArray: Array<Day> = [];
   public totalSocialPostsProcessed: number = 0;
   public hoursLabels: Array<string> = hoursLabels;
-  public socialPostCounter = {
-    'FacebookStatus': {},
-    'Tweet': {},
-    'Pin': {},
-    'Article': {},
-    'InstagramMedia': {},
-    'YoutubeVideo': {}
-  }
-
-  private subscription: Subscription;
 
   constructor() { }
 
   ngOnInit(): void {
     this.initWeekdayArray();
-    this.counterInit();
     this.initSubscription();
   }
 
@@ -38,40 +28,16 @@ export class PunchCardComponent implements OnInit {
     if (postArray.length === 0) {
       return { height: '0%', width: '0%' };
     }
-    let activeLegendSPs = this.getNumberOfPostsBasedOnUserFilters(postArray)
-    let sizeInPercentage = activeLegendSPs * 20;
+    let sizeInPercentage = (postArray.length * 100 / this.totalSocialPostsProcessed) * 20;
     return { height: sizeInPercentage + '%', width: sizeInPercentage + '%' };
   }
 
   public hoverDetails(postArray: Array<any>): string {
-    return 'Number of Social posts ' + this.getNumberOfPostsBasedOnUserFilters(postArray);
-  }
-
-  public stopSubscription(): void {
-    this.running = false;
-    this.subscription.unsubscribe();
-  }
-
-  public restartSubscription(): void {
-    this.weekdayArray = [];
-    this.initWeekdayArray();
-    this.counterInit();
-    this.totalSocialPostsProcessed = 0;
-    this.running = true;
-    this.initSubscription();
-  }
-
-  private getNumberOfPostsBasedOnUserFilters(postArray: Array<any>): number {
-    return postArray.filter((spType) => {
-      return Object.keys(this.socialPostCounter).filter((key) => {
-        return key === spType.constructor.name
-          && this.socialPostCounter[key].show === true
-      }).length !== 0;
-    }).length;
+    return 'Number of Social posts ' + postArray.length;
   }
 
   private initSubscription(): void {
-    this.subscription = this.inputSocialPost.subscribe((post: any) => {
+    this.inputSocialPost.subscribe((post: any) => {
       this.addPostToDay(post);
     });
   }
@@ -79,7 +45,6 @@ export class PunchCardComponent implements OnInit {
   private addPostToDay(post: SocialPost): void {
     let timestamp = moment.unix(post.timestamp);
     this.totalSocialPostsProcessed++;
-    this.socialPostCounter[post.constructor.name].counter++;
     this.weekdayArray[timestamp.day()].hours[timestamp.hour()].push(post);
   }
 
@@ -98,14 +63,5 @@ export class PunchCardComponent implements OnInit {
       hourArray.push([]);
     }
     return hourArray;
-  }
-
-  private counterInit(): void {
-    Object.keys(this.socialPostCounter).forEach(socialPost => {
-      this.socialPostCounter[socialPost] = {
-        counter: 0,
-        show: true
-      };
-    });
   }
 }

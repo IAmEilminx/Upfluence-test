@@ -1,9 +1,30 @@
 <div class="toolbar">
   <img alt="Upfluence Logo" src="assets/images/logo.png" />
   <span class="title">Coding Challenge.</span>
+  <img class="action-button" src="assets/icons/stop-button.png" *ngIf="running"
+    (click)="stopSubscription()">
+  <img class="action-button" src="assets/icons/update-arrow.png"
+    *ngIf="!running" (click)="restartSubscription()">
 </div>
-<div class="content">
-  <punch-card [inputSocialPost]="notifyChild.asObservable()"></punch-card>
+<div class="content" fxLayout="row wrap" fxLayoutAlign="center center">
+  <punch-card type="FacebookStatus"
+    [inputSocialPost]="socialPostTypes['FacebookStatus'].notifyChildComponent.asObservable()">
+  </punch-card>
+  <punch-card type="Tweet"
+    [inputSocialPost]="socialPostTypes['Tweet'].notifyChildComponent.asObservable()">
+  </punch-card>
+  <punch-card type="Pin"
+    [inputSocialPost]="socialPostTypes['Pin'].notifyChildComponent.asObservable()">
+  </punch-card>
+  <punch-card type="Article"
+    [inputSocialPost]="socialPostTypes['Article'].notifyChildComponent.asObservable()">
+  </punch-card>
+  <punch-card type="InstagramMedia"
+    [inputSocialPost]="socialPostTypes['InstagramMedia'].notifyChildComponent.asObservable()">
+  </punch-card>
+  <punch-card type="YoutubeVideo"
+    [inputSocialPost]="socialPostTypes['YoutubeVideo'].notifyChildComponent.asObservable()">
+  </punch-card>
 </div>
 
 <router-outlet></router-outlet>
